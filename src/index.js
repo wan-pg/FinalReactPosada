@@ -1,14 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from 'react-router-dom'
+
+// FIREBASE
+
+import { initializeApp } from "firebase/app";
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDQ-VO9qnIFC_sLFN2C84Xf5NWBpKczqFs",
+  authDomain: "e-commerce-react-a6082.firebaseapp.com",
+  projectId: "e-commerce-react-a6082",
+  storageBucket: "e-commerce-react-a6082.appspot.com",
+  messagingSenderId: "276887681956",
+  appId: "1:276887681956:web:87a90ee82cc166f9dd1f31"
+};
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>,
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
