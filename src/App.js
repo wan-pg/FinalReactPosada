@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 
+
 import { NavBar } from "./components/NavBar";
 import { ItemListContainer } from "./views/ItemListContainer";
 import { ItemDetailsContainer } from "./views/ItemDetailsContainer";
 import { Cart } from "./views/Cart";
-import { Checkout } from "./views/Checkout";
+import {CartProvider} from "./context/CartContext"
 
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <NavBar />
 
       <Routes>
@@ -23,9 +24,9 @@ function App() {
           
         </Route>
         <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        
       </Routes>
-    </>
+    </CartProvider>
   );
 }
 

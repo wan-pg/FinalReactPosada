@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext} from "react";
+import { CartContext } from "../context/CartContext";
+
+
+import { Contador } from "./Contador";
+
+
 
 export const ItemDetail = ({ producto }) => {
-  const  [added, setAdded] = useState(false);
+  
+  const {addItem} = useContext(CartContext)
 
-  const clickAgregar = ()=>{
-    setAdded(true)
-  }
+  const onAdd = quantity => addItem(producto, quantity) 
+  
 
-  const clickQuitar = ()=>{
-    setAdded(false)
-  }
 
   return (
     <>
@@ -30,28 +33,16 @@ export const ItemDetail = ({ producto }) => {
             </p>
             <p className="card-text">
               <small className="text-body-secondary">
-                Stock: {producto.stock}
+                Stock: {producto.stock} 
               </small>
             </p>
+            
           </div>
-        </div>
-        {added ? (
-          <button 
-          type="button" 
-          class="btn btn-outline-secondary"
-          onClick={clickQuitar}>
-            
-            Quitar del Carrito
-          </button>
-        ) : (
-          <button 
-          type="button" 
-          class="btn btn-outline-secondary"
-          onClick={clickAgregar}>
-            
-            Agregar al Carrito
-          </button>
-        )}
+        </div> 
+        
+        <Contador inicio = {0} stock = {producto.stock} onAdd = {onAdd}/>
+        
+
       </div>
     </>
   );
